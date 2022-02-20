@@ -1,0 +1,19 @@
+name: ZZU COMMUTE HELPER
+
+on:
+    workflow_dispatch:
+    schedule:
+    - cron: '0 20 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check
+        uses: actions/checkout@v2
+    
+      - name: Run
+        env:
+            UID: ${{secrets.UID}}
+            UPW: ${{secrets.UPW}}
+        run: bash ./script.sh $UID $UPW
